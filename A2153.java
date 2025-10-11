@@ -4,20 +4,57 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.*;
 
-public class B2145 {
+public class A2153 {
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
 
+    static boolean isBitSet(int n, int i) {
+        return (n & (1 << i)) != 0;
+    }
+
+    static int setBit(int n, int i) {
+        return n | (1 << i);
+    }
+
     static void solve() {
-        int n = sc.nextInt();
-        int k = sc.nextInt();
-        String card = sc.next();
-        for(int i=0;i<n;++i)
-        {
-            
+
+        int x = sc.nextInt();
+        int y = sc.nextInt();
+        int z = sc.nextInt();
+        int a = 0, b = 0, c = 0;
+        // 1. visit all bits from 31th to 0
+        for (int i = 0; i <= 31; ++i) {
+            if (isBitSet(x, i)) {
+                a = setBit(a, i);
+                b = setBit(b, i);
+            }
         }
-        // your logic here
-        // out.println("Your answer");
+        for (int i = 0; i <= 31; ++i) {
+            if (isBitSet(y, i)) {
+                c = setBit(c, i);
+                b = setBit(b, i);
+            }
+        }
+        for (int i = 0; i <= 31; ++i) {
+            if (isBitSet(z, i)) {
+                a = setBit(a, i);
+                c = setBit(c, i);
+            }
+        }
+        if ((a & b) != x) {
+            System.out.println("NO");
+            return;
+        }
+        if ((c & b) != y) {
+            System.out.println("NO");
+            return;
+        }
+        if ((a & c) != z) {
+            System.out.println("NO");
+            return;
+        }
+        System.out.println("YES");
+
     }
 
     public static void main(String[] args) {
