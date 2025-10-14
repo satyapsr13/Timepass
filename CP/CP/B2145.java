@@ -1,18 +1,22 @@
+ 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.*;
 
-public class Q123 {
+public class B2145 {
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
 
     static void solve() {
         int n = sc.nextInt();
-        int ans = n % 3;
-        System.out.println(ans == 0 ? 0 : 3 - ans);
-
+        int k = sc.nextInt();
+        String card = sc.next();
+        for(int i=0;i<n;++i)
+        {
+            
+        }
         // your logic here
         // out.println("Your answer");
     }

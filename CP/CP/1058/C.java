@@ -2,59 +2,39 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.lang.reflect.*;
 import java.util.*;
 
-public class A2153 {
+public class C {
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
 
-    static boolean isBitSet(int n, int i) {
-        return (n & (1 << i)) != 0;
-    }
-
-    static int setBit(int n, int i) {
-        return n | (1 << i);
+    static boolean isPalindrome(String s) {
+        int i = 0, j = s.length() - 1;
+        while (i < j) {
+            if (s.charAt(i++) != s.charAt(j--))
+                return false;
+        }
+        return true;
     }
 
     static void solve() {
+        Long n = sc.nextLong();
 
-        int x = sc.nextInt();
-        int y = sc.nextInt();
-        int z = sc.nextInt();
-        int a = 0, b = 0, c = 0;
-        // 1. visit all bits from 31th to 0
-        for (int i = 0; i <= 31; ++i) {
-            if (isBitSet(x, i)) {
-                a = setBit(a, i);
-                b = setBit(b, i);
+        String s = Long.toBinaryString(n);
+        StringBuilder temp = new StringBuilder(s);
+        while (temp.length() < 61) {
+            if (isPalindrome(temp.toString())) {
+                System.out.println("YES");
+                return;
             }
+            temp.insert(0, '0');
+            // System.out.println(temp.toString());
         }
-        for (int i = 0; i <= 31; ++i) {
-            if (isBitSet(y, i)) {
-                c = setBit(c, i);
-                b = setBit(b, i);
-            }
-        }
-        for (int i = 0; i <= 31; ++i) {
-            if (isBitSet(z, i)) {
-                a = setBit(a, i);
-                c = setBit(c, i);
-            }
-        }
-        if ((a & b) != x) {
-            System.out.println("NO");
-            return;
-        }
-        if ((c & b) != y) {
-            System.out.println("NO");
-            return;
-        }
-        if ((a & c) != z) {
-            System.out.println("NO");
-            return;
-        }
-        System.out.println("YES");
+        System.out.println("NO");
 
+        // your logic here
+        // out.println("Your answer");
     }
 
     public static void main(String[] args) {
@@ -119,5 +99,15 @@ public class A2153 {
             }
             return str;
         }
+    }
+
+    static void printArr(Object arr) {
+        int len = Array.getLength(arr);
+        for (int i = 0; i < len; i++) {
+            if (i > 0)
+                out.print(" ");
+            out.print(Array.get(arr, i));
+        }
+        out.println();
     }
 }
