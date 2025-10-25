@@ -1,0 +1,122 @@
+-----------------------------
+DFS
+-----------------------------
+
+private void dfs(ArrayList<ArrayList<Integer>> graph, int node, boolean[] vis) {
+    // ✅ Step 1: Mark the current node as visited
+    vis[node] = true;
+
+    // ✅ Step 2: Explore all neighbors/children
+    for (int child : graph.get(node)) {
+        if (!vis[child]) {
+            dfs(graph, child, vis);
+        }
+    }
+
+    // ⚙️ Optional: Any post-processing after fully exploring this node
+    // e.g., stack.push(node);   // for topological sort
+    // e.g., finishTime[node] = time++;
+}
+Cycle Detection BFS undirected
+************
+    // DFS function to detect cycle
+    private boolean dfs(int node, int parent, ArrayList<ArrayList<Integer>> adj, boolean[] visited) {
+        // Mark current node visited
+        visited[node] = true;
+
+        // Traverse neighbors
+        for (int neighbor : adj.get(node)) {
+
+            // If neighbor not visited, recurse
+            if (!visited[neighbor]) {
+                if (dfs(neighbor, node, adj, visited)) return true;
+            }
+
+            // If neighbor visited and not parent, cycle exists
+            else if (neighbor != parent) {
+                return true;
+            }
+        }
+
+        // No cycle found from this path
+        return false;
+    }
+
+    // Function to check cycle in graph
+    public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
+        boolean[] visited = new boolean[V];
+
+        // Check all components
+        for (int i = 0; i < V; i++) {
+            if (!visited[i]) {
+                if (dfs(i, -1, adj, visited)) return true;
+            }
+        }
+        return false;
+    }
+
+-----------------------------
+BFS
+-----------------------------
+static void bfs(List<List<Integer>> graph, int n, int start) {
+    boolean[] visited = new boolean[n];
+    ArrayDeque<Integer> q = new ArrayDeque<>();
+    q.add(start);
+    visited[start] = true;
+    while (!q.isEmpty()) {
+        int node = q.poll();
+        System.out.print(node + " ");
+        for (int nei : graph.get(node)) {
+            if (!visited[nei]) {
+                visited[nei] = true;
+                q.add(nei);
+            }
+        }
+    }
+}
+BFS- CYCLE DETECTION Undirected graph
+*************************************
+    record Node(int node, int parent) {}
+
+    static boolean checkForCycle(ArrayList<ArrayList<Integer>> adj, int s,boolean vis[], int parent[]) {
+        Queue<Node> q = new ArrayDeque<>();
+        q.add(new Node(s, -1));
+        vis[s] = true;
+
+        while (!q.isEmpty()) {
+
+            Node current = q.poll();
+            int node = current.node();
+            int par = current.parent();
+
+            for (Integer it : adj.get(node)) {
+                if (vis[it] == false) {
+                    q.offer(new Node(it, node));
+                    vis[it] = true;
+                }
+
+                // if adjacent node is visited and is not its own parent node
+                else if (par != it)
+                    return true;
+            }
+        }
+
+        return false;
+    }
+
+    // function to detect cycle in an undirected graph
+    public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
+        boolean vis[] = new boolean[V];
+        Arrays.fill(vis, false);
+        int parent[] = new int[V];
+        Arrays.fill(parent, -1);
+
+        for (int i = 0; i < V; i++)
+            if (vis[i] == false)
+                if (checkForCycle(adj, i, vis, parent))
+                    return true;
+
+        return false;
+    }
+
+

@@ -1,0 +1,59 @@
+---------------------------
+GCD
+---------------------------
+if gcd(a,b) >1
+-> it means they will share common factor
+
+
+---------------------------
+Square-Free Number
+---------------------------
+
+Definition: Number not divisible by any perfect square >1.
+
+Example: 6, 10, 15
+
+Notes:
+
+rad(n) = n if n is square-free.
+
+
+
+---------------------------
+Square-Free Kernel (Radical)
+---------------------------
+The square free kernel of n, often written as rad(n) is product of distinct prime numbers whose power is odd.
+n=450= pow(2,1) * pow(3,2) * pow(5,2)
+
+Square free Radical rad(450)= 2*3*5
+
+Note:
+-> If two number have to be perfect square then they should have same Radical
+
+Code:
+    static long rad(long n) {
+        long result = 1;
+        long temp = n;
+
+        // Check divisibility by 2
+        if (n % 2 == 0) {
+            result *= 2;
+            while (n % 2 == 0)
+                n /= 2;
+        }
+
+        // Check odd numbers from 3 to sqrt(n)
+        for (long i = 3; i * i <= n; i += 2) {
+            if (n % i == 0) {
+                result *= i;
+                while (n % i == 0)
+                    n /= i;
+            }
+        }
+
+        // If remaining n > 1, it's prime
+        if (n > 1)
+            result *= n;
+
+        return result;
+    }
