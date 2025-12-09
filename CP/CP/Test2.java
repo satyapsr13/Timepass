@@ -1,112 +1,61 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.lang.reflect.*;
-import java.util.*;
-
-public class Test2 {
-    // author: satyapsr13
-    static FastReader sc = new FastReader();
-    static PrintWriter out = new PrintWriter(System.out);
-
-    static boolean isSumPairPresent(int[] arr, int target) {
-        Arrays.sort(arr);
-        int n = arr.length;
-
-        int l = 0, r = 1;
-        while (l < n - 1) {
-            if (arr[l] + arr[r] < target) {
-                r++;
-            } else if (arr[l] + arr[r] == target) {
+class Solution {
+    boolean isFirstn(int[] nums, int target) {
+        for (int i = 0; i < nums.length - 1; ++i) {
+            if (nums[i] == target) {
                 return true;
-
-            } else if (l < r) {
-                l++;
             }
-
         }
-
         return false;
     }
 
-    static void solve() {
-        int n = sc.nextInt();
-        int[] arr = sc.nextArray(n);
-    }
+    long getAns(int[] nums1, int[] nums2) {
+        long ans = 0;
+        for (int i = 0; i < nums1.length; ++i) {
 
-    public static void main(String[] args) {
-        int t = sc.nextInt();
-        while (t-- > 0)
-            solve();
-        out.flush();
-    }
-
-    // --- Utility Classes/Methods Below ---
-    static class FastReader {
-        BufferedReader br;
-        StringTokenizer st;
-
-        FastReader() {
-            br = new BufferedReader(new InputStreamReader(System.in));
+            ans += Math.abs(nums1[i] - nums2[i]);
         }
+        return ans;
+    }
 
-        String next() {
-            while (st == null || !st.hasMoreElements()) {
-                try {
-                    st = new StringTokenizer(br.readLine());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+    boolean isTargetIsInBetween(int[] nums1, int[] nums2, int target) {
+        for (int i = 0; i < nums1.length; ++i) {
+
+            if (Math.min(nums1[i], nums2[i]) <= target && Math.max(nums1[i], nums2[i]) >= target) {
+                return true;
             }
-            return st.nextToken();
-        }
 
-        int nextInt() {
-            return Integer.parseInt(next());
         }
-
-        long nextLong() {
-            return Long.parseLong(next());
-        }
-
-        int[] nextArray(int n) {
-            int[] arr = new int[n];
-            for (int i = 0; i < n; i++)
-                arr[i] = nextInt();
-            return arr;
-        }
-
-        String[] nextStringArray(int n) {
-            String[] arr = new String[n];
-            for (int i = 0; i < n; i++)
-                arr[i] = next();
-            return arr;
-        }
-
-        double nextDouble() {
-            return Double.parseDouble(next());
-        }
-
-        String nextLine() {
-            String str = "";
-            try {
-                str = br.readLine();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return str;
-        }
+        return false;
     }
 
-    static void printArr(Object arr) {
-        int len = Array.getLength(arr);
-        for (int i = 0; i < len; i++) {
-            if (i > 0)
-                out.print(" ");
-            out.print(Array.get(arr, i));
+    long getMinimumDiff(int[] nums, int target) {
+        int ans = Integer.MAX_VALUE;
+        for (int num : nums) {
+            // int num=nums[i];
+            ans = Math.min(ans, Math.abs(num - target));
         }
-        out.println();
+        return ans;
     }
 
-}
+    long getMinimumDiff2(int[] nums, int target) {
+        int ans = Integer.MAX_VALUE;
+        for (int i = 0; i < nums.length - 1; ++i) {
+            // int num=nums[i];
+            int num = nums[i];
+            ans = Math.min(ans, Math.abs(num - target));
+        }
+        return ans;
+    }
+
+    public long minOperations(int[] nums1, int[] nums2) {
+        int n = nums1.length;
+        int m = nums2.length;
+        long ans = getAns(nums1, nums2);
+        if (isFirstn(nums2, nums2[m - 1]) || isTargetIsInBetween(nums1, nums2, nums2[m - 1])) {
+            return ans + 1;
+        }
+        long diff1 = (getMinimumDiff(nums1, nums2[m - 1]) * 2);
+        long diff2 = (getMinimumDiff2(nums2, nums2[m - 1]) * 2);
+        return ans + Math.min(diff1, diff2);
+    }
+}©leetcode

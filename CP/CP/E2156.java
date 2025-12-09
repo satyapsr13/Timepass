@@ -5,17 +5,57 @@ import java.io.PrintWriter;
 import java.lang.reflect.*;
 import java.util.*;
 
-public class Test {
+public class E2156 {
     // author: satyapsr13
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
 
+    // Floor division (round down)
+    public static int fdiv(int num, int denom) {
+        return num / denom - ((num ^ denom) < 0 && num % denom != 0 ? 1 : 0);
+    }
+
+    // Ceil division (round up)
+    public static int cdiv(int num, int denom) {
+        return fdiv(num + denom - 1, denom);
+    }
+
+    static boolean isContains(int[] nums, int target) {
+        int n = nums.length;
+        int count = 0;
+        for (int i = 0; i < n; ++i) {
+            for (int j = i + 1; j < n; ++j) {
+                if (nums[j] - nums[i] >= target) {
+                    count++;
+                    if (count >= 2) {
+                        return true;
+                    }
+                }
+
+            }
+        }
+        return false;
+    }
+
     static void solve() {
         int n = sc.nextInt();
-        final String temp = "satya_prakash";
-        StringBuilder sb = new StringBuilder(temp);
+        int[] arr = sc.nextArray(n);
 
-        System.out.println(sb.substring(1, 3) + sb.substring(3));
+        int l = Integer.MIN_VALUE;
+        int r = Integer.MAX_VALUE;
+        int ans = -1;
+        while (l < r) {
+            int mid = cdiv(l + r, 2);
+
+            if (isContains(arr, mid)) {
+                ans = mid;
+                l = mid + 1;
+            } else {
+                r = mid - 1;
+            }
+
+        }
+        System.out.println(ans);
 
     }
 
@@ -92,5 +132,4 @@ public class Test {
         }
         out.println();
     }
-
 }

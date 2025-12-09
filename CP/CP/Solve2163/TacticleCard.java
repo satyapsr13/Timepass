@@ -5,17 +5,25 @@ import java.io.PrintWriter;
 import java.lang.reflect.*;
 import java.util.*;
 
-public class Test {
+public class TacticleCard {
     // author: satyapsr13
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
 
     static void solve() {
         int n = sc.nextInt();
-        final String temp = "satya_prakash";
-        StringBuilder sb = new StringBuilder(temp);
+        int[] a = sc.nextArray(n);
+        int[] b = sc.nextArray(n);
+        // int[][] dp = new int[n][2];
+        // dp[0][0] = -a[0];
+        // dp[0][1] = b[0];
+        int scoreA = -a[0], scoreB = b[0];
+        for (int i = 1; i < n; ++i) {
+            // choose score A
+            int temp = scoreA - a[i];
+            temp = Math.max(temp, scoreB);
 
-        System.out.println(sb.substring(1, 3) + sb.substring(3));
+        }
 
     }
 
@@ -92,5 +100,4 @@ public class Test {
         }
         out.println();
     }
-
 }

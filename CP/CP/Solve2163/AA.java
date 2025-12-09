@@ -5,18 +5,35 @@ import java.io.PrintWriter;
 import java.lang.reflect.*;
 import java.util.*;
 
-public class Test {
+public class AA {
     // author: satyapsr13
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
 
+    static public boolean isInside(int x, int y, int n, int m) {
+        return x >= 0 && x < n && y >= 0 && y < m;
+    }
+
     static void solve() {
         int n = sc.nextInt();
-        final String temp = "satya_prakash";
-        StringBuilder sb = new StringBuilder(temp);
+        int k = sc.nextInt();
+        String s = sc.next();
+        int ans = 0;
+        int canSleep = 0;
+        for (int i = 0; i < n; ++i) {
 
-        System.out.println(sb.substring(1, 3) + sb.substring(3));
-
+            if (s.charAt(i) == '1') {
+                canSleep = k;
+                continue;
+            } else {
+                if (canSleep == 0) {
+                    ans++;
+                }
+                if (canSleep > 0)
+                    canSleep--;
+            }
+        }
+        System.out.println(ans);
     }
 
     public static void main(String[] args) {
@@ -92,5 +109,4 @@ public class Test {
         }
         out.println();
     }
-
 }

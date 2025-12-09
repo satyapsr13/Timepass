@@ -5,18 +5,31 @@ import java.io.PrintWriter;
 import java.lang.reflect.*;
 import java.util.*;
 
-public class Test {
+public class PadhLeBhai {
     // author: satyapsr13
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
 
+    public static boolean isInRange(int a, int b, int target) {
+        return target >= Math.min(a, b) && target <= Math.max(a, b);
+    }
+
     static void solve() {
+
         int n = sc.nextInt();
-        final String temp = "satya_prakash";
-        StringBuilder sb = new StringBuilder(temp);
+        int[] arr = sc.nextArray(n);
+        int k = sc.nextInt();
 
-        System.out.println(sb.substring(1, 3) + sb.substring(3));
+        int mx = Arrays.stream(arr).max().orElse(Integer.MIN_VALUE);
+        int mn = Arrays.stream(arr).min().orElse(Integer.MAX_VALUE);
 
+        if (isInRange(mn, mx, k)) {
+            System.out.println("YES");
+
+        } else {
+            System.out.println("NO");
+
+        }
     }
 
     public static void main(String[] args) {

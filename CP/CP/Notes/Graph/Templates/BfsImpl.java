@@ -14,9 +14,7 @@ public class BfsImpl {
     static void solve() {
         int n = sc.nextInt();
         int[] arr = sc.nextArray(n);
-
-        // your logic here
-        // out.println("Your answer");
+        
     }
 
     public static void main(String[] args) {

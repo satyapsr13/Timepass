@@ -18,6 +18,7 @@ public class DfsImpl {
 
             }
         }
+
         public static void debugDp(int[][] dp) {
             System.out.println("DP Table:");
             for (int i = 0; i < dp.length; i++) {
@@ -29,11 +30,12 @@ public class DfsImpl {
             }
             System.out.println("--------------------");
         }
-        
 
         public boolean isInside(int x, int y, int n, int m) {
             return x >= 0 && x < n && y >= 0 && y < m;
         }
+
+        
 
         public int orangesRotting(int[][] grid) {
             int ans = 0;
