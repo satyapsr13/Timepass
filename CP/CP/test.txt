@@ -1,3 +1,0 @@
-1. storeAddress- shippingAd must be in in range of 3-5 km . we have that lat long
-2. in previous order 
-      -> 

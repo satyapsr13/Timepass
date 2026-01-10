@@ -2,38 +2,41 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.lang.reflect.*;
 import java.util.*;
 
-class C2153 {
+public class A {
+    // author: satyapsr13
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
 
-    static void solve() {
-        int n = sc.nextInt();
+    static int countTarget(int[] arr, int target) {
+        int count = 0;
+        for (int num : arr) {
+            if (num == target)
 
-        HashMap<Integer, Integer> map = new HashMap<>();
-        int temp;
-        int sum = 0;
-        for (int i = 0; i < n; ++i) {
-            temp = sc.nextInt();
-            sum += temp;
-            map.put(temp, map.getOrDefault(temp, 0) + 1);
-        }
-        int oddCounts = 0;
-        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            if (entry.getValue() % 2 != 0) {
-                oddCounts++;
+            {
+                count++;
             }
         }
-        if (oddCounts < 3) {
-            System.out.println(sum);
+        return count;
+    }
+
+    static void solve() {
+        int n = sc.nextInt();
+        int[] arr = sc.nextArray(n);
+
+        int count1 = countTarget(arr, 1);
+        if (count1 == n) {
+            System.out.println("Alice");
             return;
         }
-
-        System.out.println(0);
-        // store every number in hashmap
-        // now check if n is odd there should be only 1 number with odd count
-        // if even then there can be 2 num with
+        if (count1 == 0 || (arr[0] == 0 && arr[n - 1] == 0)) {
+            System.out.println("Bob");
+            return;
+        }
+        System.out.println("Alice");
+        return;
     }
 
     public static void main(String[] args) {
@@ -98,5 +101,15 @@ class C2153 {
             }
             return str;
         }
+    }
+
+    static void printArr(Object arr) {
+        int len = Array.getLength(arr);
+        for (int i = 0; i < len; i++) {
+            if (i > 0)
+                out.print(" ");
+            out.print(Array.get(arr, i));
+        }
+        out.println();
     }
 }

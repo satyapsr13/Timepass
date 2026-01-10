@@ -1,4 +1,3 @@
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -6,16 +5,47 @@ import java.io.PrintWriter;
 import java.lang.reflect.*;
 import java.util.*;
 
-public class A2155 {
-static FastReader sc = new FastReader();
+public class B {
+
+    // author: satyapsr13
+    static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
+
+    static boolean isLess(String a, String b) {
+        int n = Math.min(a.length(), b.length());
+        for (int i = 0; i < n; ++i) {
+            if (a.charAt(i) < b.charAt(i)) {
+                return true;
+            }
+
+            if (a.charAt(i) > b.charAt(i)) {
+                return false;
+            }
+        }
+        return false;
+    }
 
     static void solve() {
         int n = sc.nextInt();
-        int[] arr = sc.nextArray(n);
+        // int
+        // [] arr = sc.nextArray(n);
+        ArrayList<String> arr = new ArrayList<>(n);
+        StringBuilder ans = new StringBuilder();
+        for (int i = 0; i < n; ++i) {
+            arr.add(sc.next());
+        }
+        ans.append(arr.get(0));
+        // System.out.println("Updated String : " + ans.toString());
+        for (int i = 1; i < n; ++i) {
+            if (arr.get(i).compareTo(ans.toString()) < 0) {
+                ans.insert(0, arr.get(i)); 
+            } else {
+                ans.append(arr.get(i)); 
+            }
 
-        // your logic here
-        // out.println("Your answer");
+        }
+
+        out.println(ans.toString());
     }
 
     public static void main(String[] args) {
@@ -81,6 +111,7 @@ static FastReader sc = new FastReader();
             return str;
         }
     }
+
     static void printArr(Object arr) {
         int len = Array.getLength(arr);
         for (int i = 0; i < len; i++) {
@@ -89,5 +120,5 @@ static FastReader sc = new FastReader();
             out.print(Array.get(arr, i));
         }
         out.println();
-    }    
+    }
 }

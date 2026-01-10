@@ -1,24 +1,31 @@
- 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.lang.reflect.*;
 import java.util.*;
 
-public class B2145 {
+public class C {
+    // author: satyapsr13
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
 
     static void solve() {
         int n = sc.nextInt();
+        int m = sc.nextInt();
         int k = sc.nextInt();
-        String card = sc.next();
-        for(int i=0;i<n;++i)
-        {
-            
+        int i = k, j = k;
+        m--;
+        while (true) {
+            if (i > 0) {
+                
+
+            } else {
+
+            }
+
         }
-        // your logic here
-        // out.println("Your answer");
+
     }
 
     public static void main(String[] args) {
@@ -83,5 +90,15 @@ public class B2145 {
             }
             return str;
         }
+    }
+
+    static void printArr(Object arr) {
+        int len = Array.getLength(arr);
+        for (int i = 0; i < len; i++) {
+            if (i > 0)
+                out.print(" ");
+            out.print(Array.get(arr, i));
+        }
+        out.println();
     }
 }

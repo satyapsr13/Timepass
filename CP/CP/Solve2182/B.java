@@ -5,24 +5,66 @@ import java.io.PrintWriter;
 import java.lang.reflect.*;
 import java.util.*;
 
-public class D2162 {
-
+public class B {
+    // author: satyapsr13
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
 
-    static void solve() {
-        int n = sc.nextInt();
-        int m = 2 * n;
-        int[] arr = new int[m];
-        
-        // your logic here
-        // out.println("Your answer");
+    static boolean isSqr(int n) {
+        int a = (int) Math.sqrt(n);
+        return a * a == n;
+    }
+
+    static int solve(int a, int b) {
+        // int n = sc.nextInt();
+
+        int idx = 1;
+
+        while (true) {
+
+            if (isSqr(idx)) {
+                if (b < idx) {
+                    break;
+                }
+                b -= idx;
+                idx *= 2;
+                // System.out.println("Making from b: " + idx);
+            } else {
+                if (a < idx) {
+                    break;
+                }
+                a -= idx;
+                idx *= 2;
+                // System.out.println("Making from a: " + idx);
+
+            }
+        }
+        // out.println(idx);
+        return idx;
+        // while (reqA<= a && reqB <= b) {
+
+        // }
+
+    }
+
+    static int getPowerOfTwo(int n) {
+        int power = 0;
+        while (n > 1) {
+            n >>= 1;
+            power++;
+        }
+        return power;
     }
 
     public static void main(String[] args) {
         int t = sc.nextInt();
-        while (t-- > 0)
-            solve();
+        while (t-- > 0) {
+
+            int a = sc.nextInt();
+            int b = sc.nextInt();
+            // solve();
+            System.out.println(getPowerOfTwo(Math.max(solve(a, b), solve(b, a))));
+        }
         out.flush();
     }
 

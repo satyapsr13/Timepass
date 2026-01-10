@@ -1,0 +1,1 @@
+{"name":"Local: B","url":"d:\\Dsa\\CP\\CP\\CP\\Solve2180\\B.java","tests":[{"id":1766552954870,"input":"3\n4\namir rima amin nima\n1\ncodeforces\n3\na ab abc\n","output":"aminamirrimanima\ncodeforces\naababc\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Dsa\\CP\\CP\\CP\\Solve2180\\B.java","group":"local","local":true}

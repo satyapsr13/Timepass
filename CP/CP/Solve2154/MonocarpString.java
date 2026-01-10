@@ -1,21 +1,70 @@
- 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.lang.reflect.*;
 import java.util.*;
 
-public class Q123 {
+public class MonocarpString {
+    // author: satyapsr13
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
 
-    static void solve() {
-        int n = sc.nextInt();
-        int ans = n % 3;
-        System.out.println(ans == 0 ? 0 : 3 - ans);
+    static int countChar(String s, char x) {
+        int count = 0;
+        for (char ch : s.toCharArray()) {
+            if (ch == x) {
+                count++;
+            }
+        }
+        return count;
+    }
 
-        // your logic here
-        // out.println("Your answer");
+    static class Pair {
+        public int a, b;
+
+        public Pair(int a, int b) {
+            this.a = a;
+            this.b = b;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (!(o instanceof Pair))
+                return false;
+            Pair other = (Pair) o;
+            return (a == other.a) && (b == other.b);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(a, b);
+        }
+    }
+
+    static Pair getNext(Pair curr, Pair target, char ch) {
+        int x = curr.a, y = curr.b;
+        if (ch == '8') {
+            if (target.a > curr.a) {
+                x++;
+            }
+            if (target.b > curr.b) {
+                y++;
+            }
+
+        } else {
+            if (target.a > curr.a) {
+                x++;
+            } else if (target.b > curr.b) {
+                y++;
+            }
+
+        }
+        return new Pair(x, y);
+    }
+
+    static void solve() {
+        // System.out.println(Objects.hash(4, 3,));
     }
 
     public static void main(String[] args) {
@@ -81,4 +130,15 @@ public class Q123 {
             return str;
         }
     }
+
+    static void printArr(Object arr) {
+        int len = Array.getLength(arr);
+        for (int i = 0; i < len; i++) {
+            if (i > 0)
+                out.print(" ");
+            out.print(Array.get(arr, i));
+        }
+        out.println();
+    }
+
 }

@@ -1,3 +1,4 @@
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -5,18 +6,27 @@ import java.io.PrintWriter;
 import java.lang.reflect.*;
 import java.util.*;
 
-public class Test {
+public class A {
     // author: satyapsr13
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
 
+    static boolean is2025(String s, int i)
+    {
+        return false;
+    }
+
     static void solve() {
         int n = sc.nextInt();
-        final String temp = "satya_prakash";
-        StringBuilder sb = new StringBuilder(temp);
-
-        System.out.println(sb.substring(1, 3) + sb.substring(3));
-
+        String s = sc.next();
+        
+        if(s.contains("2026"))
+        {
+            out.println(0);
+            return;
+        }
+         
+        out.println(0);
     }
 
     public static void main(String[] args) {
@@ -92,5 +102,4 @@ public class Test {
         }
         out.println();
     }
-
 }
