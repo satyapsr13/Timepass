@@ -1,0 +1,1 @@
+{"name":"Local: LongestCommonSubsequence","url":"d:\\Dsa\\CP\\CP\\CP\\DSA\\DP\\String\\LongestCommonSubsequence.java","tests":[{"id":1768065006001,"input":"satya\nata","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Dsa\\CP\\CP\\CP\\DSA\\DP\\String\\LongestCommonSubsequence.java","group":"local","local":true}
