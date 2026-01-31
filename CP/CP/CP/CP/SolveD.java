@@ -5,52 +5,39 @@ import java.io.PrintWriter;
 import java.lang.reflect.*;
 import java.util.*;
 
-public class A {
+public class SolveD {
     // author: satyapsr13
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
 
-    static int countTarget(int[] arr, int target) {
-        int count = 0;
-        for (int num : arr) {
-            if (num == target)
-
-            {
-                count++;
-            }
-        }
-        return count;
-    }
-
     static void solve() {
-        int n = sc.nextInt();
-        int h = sc.nextInt();
-        int l = sc.nextInt();
-        int[] arr = sc.nextArray(n);
+        int x = sc.nextInt();
+        int y = sc.nextInt();
 
-        ArrayList<Integer> hr = new ArrayList<>(n);
-        ArrayList<Integer> hl = new ArrayList<>(n);
-        Arrays.sort(arr);
-        int mn = Math.min(h, l);
-        int mx = Math.max(h, l);
+        int p = x;
+        int q = y;
+        ArrayDeque<Integer> stack = new ArrayDeque<>();
+        for (int i = 0; i < 31; ++i) {
+            if (((p & (1 << i)) != 0) && ((q & (1 << i)) != 0)) {
+                if (stack.isEmpty()) {
 
-        for (int i = n - 1; i >= 0; --i) {
-            if (arr[i] <= mn) {
-                hr.add(arr[i]);
-            } else if (arr[i] <= mx) {
-                hl.add(arr[i]);
+                    p = p & (~((1 << i)));
+                } else {
+                    while (!stack.isEmpty()) {
+
+                        p = p | (1 << stack.pop());
+
+                    }
+                    p = p & (~((1 << i)));
+                }
             }
 
+            if (((p & (1 << i)) == 0) && ((q & (1 << i)) == 0)) {
+                // p = p & (~((1 << i)));
+                stack.push(i);
+            }
         }
-        int n1 = hr.size();
-        int n2 = hl.size();
-        if (n1 >= n2) {
-            System.out.println((n1 + n2) / 2);
-            return;
-        } else {
-            System.out.println(n1);
-
-        }
+        System.out.println(p + " " + q);
 
     }
 

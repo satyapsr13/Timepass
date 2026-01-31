@@ -5,27 +5,77 @@ import java.io.PrintWriter;
 import java.lang.reflect.*;
 import java.util.*;
 
-public class C {
+public class Solution {
     // author: satyapsr13
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
 
+    static boolean isExist(String s, int i, int n) {
+        if (i == 0 || i > n - 3)
+            return false;
+        return (s.charAt(i) == '0') && (s.charAt(i - 1) == '0') && (s.charAt(i + 1) == '0') && (s.charAt(i + 2) == '0');
+    }
+
+    static int count(StringBuilder s) {
+        int sum = 0;
+        for (char ch : s.toString().toCharArray()) {
+            if (ch == '1')
+                sum++;
+        }
+        return sum;
+    }
+
+    static void modify(StringBuilder sb, int i, int n) {
+        // for(int i)
+
+    }
+
+    // Count occurrences of a particular character
+    public static int countChar(String s, char ch) {
+        int count = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == ch)
+                count++;
+        }
+        return count;
+    }
+
     static void solve() {
         int n = sc.nextInt();
-        int m = sc.nextInt();
-        int k = sc.nextInt();
-        int i = k, j = k;
-        m--;
-        while (true) {
-            if (i > 0) {
-                
+        String s = sc.next();
+        if (n <= 2) {
+            if (n == 1) {
+                System.out.println("1");
+                return;
+            } else if (n == 2) {
+                System.out.println(Math.max(1, count(new StringBuilder(s))));
+                return;
+            }
+            return;
+        }
+        StringBuilder sb = new StringBuilder(s);
+
+        if (sb.charAt(0) == '0' && sb.charAt(1) == '0') {
+            sb.setCharAt(1, '1');
+        }
+        int sum = 0;
+        
+        for (int i = 0; i < n; ++i) {
+            if (sb.charAt(i) == '0') {
+                sum++;
 
             } else {
-
+                sum = 0;
             }
-
+            if (sum == 3) {
+                sum = 0;
+                sb.setCharAt(i, '1');
+            }
         }
-
+        if (sb.charAt(n-2) == '0' && sb.charAt(n-1) == '0') {
+            sb.setCharAt(n-1, '1');
+        }
+        System.out.println(countChar(sb.toString(), '1'));
     }
 
     public static void main(String[] args) {

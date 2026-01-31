@@ -5,53 +5,40 @@ import java.io.PrintWriter;
 import java.lang.reflect.*;
 import java.util.*;
 
-public class A {
+public class B {
     // author: satyapsr13
     static FastReader sc = new FastReader();
     static PrintWriter out = new PrintWriter(System.out);
 
-    static int countTarget(int[] arr, int target) {
-        int count = 0;
-        for (int num : arr) {
-            if (num == target)
-
-            {
-                count++;
-            }
-        }
-        return count;
-    }
-
     static void solve() {
         int n = sc.nextInt();
-        int h = sc.nextInt();
-        int l = sc.nextInt();
-        int[] arr = sc.nextArray(n);
+        long x = sc.nextLong();
 
-        ArrayList<Integer> hr = new ArrayList<>(n);
-        ArrayList<Integer> hl = new ArrayList<>(n);
-        Arrays.sort(arr);
-        int mn = Math.min(h, l);
-        int mx = Math.max(h, l);
+        long mx = Long.MIN_VALUE;
 
-        for (int i = n - 1; i >= 0; --i) {
-            if (arr[i] <= mn) {
-                hr.add(arr[i]);
-            } else if (arr[i] <= mx) {
-                hl.add(arr[i]);
-            }
+        for (int i = 0; i < n; i++) {
+            long a = sc.nextLong();
+            long b = sc.nextLong();
+            long c = sc.nextLong();
 
+            long freeJump = a * (b - 1);
+            x -= freeJump;
+
+            long minJump = a * b - c;
+            mx = Math.max(mx, minJump);
         }
-        int n1 = hr.size();
-        int n2 = hl.size();
-        if (n1 >= n2) {
-            System.out.println((n1 + n2) / 2);
+
+        if (x <= 0) {
+            System.out.println(0);
             return;
-        } else {
-            System.out.println(n1);
-
         }
 
+        if (mx <= 0) {
+            System.out.println(-1);
+            return;
+        }
+
+        System.out.println((x + mx - 1) / mx);
     }
 
     public static void main(String[] args) {

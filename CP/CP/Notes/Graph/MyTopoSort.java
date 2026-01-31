@@ -1,4 +1,12 @@
-private static List<Integer> topoSort(int n, List<List<Integer>> graph) {
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.lang.reflect.*;
+import java.util.*;
+
+public class MyTopoSort {
+    private static List<Integer> topoSort(int n, List<List<Integer>> graph) {
         int[] indegree = new int[n];
         for (int i = 0; i < n; ++i) {
             for (int neighbor : graph.get(i)) {
@@ -32,3 +40,8 @@ private static List<Integer> topoSort(int n, List<List<Integer>> graph) {
         return toposort;
 
     }
+
+    public static void main(String[] args) {
+
+    }
+}

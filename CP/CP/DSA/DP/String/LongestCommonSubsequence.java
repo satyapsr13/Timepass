@@ -3,6 +3,10 @@ package DSA.DP.String;
 import java.util.Scanner;
 
 public class LongestCommonSubsequence {
+
+
+
+    
     private static int getLCSLength(String s1, String s2, boolean printLcs) {
         int n = s1.length();
         int m = s2.length();
@@ -20,6 +24,30 @@ public class LongestCommonSubsequence {
             }
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         if (printLcs
 
         ) {
@@ -28,8 +56,8 @@ public class LongestCommonSubsequence {
 
             while (i > 0 && j > 0) {
 
-                if (s1.charAt(i-1) == s2.charAt(j-1)) {
-                    ans.append(s1.charAt(i-1));
+                if (s1.charAt(i - 1) == s2.charAt(j - 1)) {
+                    ans.append(s1.charAt(i - 1));
                     i--;
                     j--;
                 } else {
@@ -41,7 +69,6 @@ public class LongestCommonSubsequence {
                     }
 
                 }
-
             }
             System.out.println(ans.reverse().toString());
         }

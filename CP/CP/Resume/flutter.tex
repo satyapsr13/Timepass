@@ -50,12 +50,11 @@
 \usepackage{url}
 \usepackage{parskip} 	
 
-
 %other packages for formatting
 \RequirePackage{color}
 \RequirePackage{graphicx}
 \usepackage[usenames,dvipsnames]{xcolor}
-\usepackage[scale=0.9]{geometry}
+\usepackage[scale=0.95]{geometry}
 
 %tabularx environment
 \usepackage{tabularx}
@@ -72,6 +71,8 @@
 \newlength{\fullcollw}
 \setlength{\fullcollw}{0.47\textwidth}
 
+
+
 %custom \section
 \usepackage{titlesec}				
 \usepackage{multicol}
@@ -80,7 +81,7 @@
 %CV Sections inspired by: 
 %http://stefano.italians.nl/archives/26
 \titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
-\titlespacing{\section}{0pt}{10pt}{10pt}
+\titlespacing{\section}{0pt}{6pt}{6pt}
 
 %for publications
 \usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
@@ -146,38 +147,67 @@
 \Huge{Satya Prakash} \\[7.5pt]
 \href{https://github.com/satyapsr13}{\raisebox{-0.05\height}\faGithub\ satyapsr13} \ $|$ \ 
 \href{https://linkedin.com/in/satyapsr13}{\raisebox{-0.05\height}\faLinkedin\ satyapsr13} \ $|$ \ 
-\href{https://mysite.com}{\raisebox{-0.05\height}\faGlobe \ mysite.com} \ $|$ \ 
+\href{https://satyapsr13.github.io/satyapsr13/}{\raisebox{-0.05\height}\faCode \ satyapsr13} \ $|$ \ 
 \href{mailto:satyapsr13@gmail.com}{\raisebox{-0.05\height}\faEnvelope \ satyapsr13@gmail.com} \ $|$ \ 
-\href{tel:+91 8085746780}{\raisebox{-0.05\height}\faMobile \ +91 8085746780} \\
+\href{tel:+91 8085746780}{\raisebox{-0.05\height}\faPhone \ +91 8085746780} \\
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
 % EXPERIENCE SECTIONS
 %----------------------------------------------------------------------------------------
-
-%Interests/ Keywords/ Summary
 \section{Summary}
-Software Engineer with experience in building scalable mobile and backend systems using Flutter, .NET microservices, and modern web frameworks. Proven ability to design clean architectures, optimize APIs, and deliver production-ready solutions end-to-end. .
-
-%Experience
+Software Engineer skilled in Flutter, .NET Core, microservices, REST APIs, and full-stack development of scalable systems.
+Experienced in clean architecture, performance optimization, and end-to-end product delivery.
+% Experience
 \section{Work Experience}
 
-\begin{jobshort}{Designation}{Jan 2021 - present}
-long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width
-\end{jobshort}
+\begin{joblong}{CogitX AI (formerly Styava Pvt. Ltd.)}{Apr 2022 - Present}
 
+\textbf{Software Engineer} \hfill \textit{May 2024 - Present}
+\begin{itemize}
+  \item Designed and developed scalable microservices using \textbf{.NET (C\#)}  for production systems.
+  \item Implemented complex backend logic including \textbf{locking mechanisms}, \textbf{financial workflows}, and secure RESTful APIs.
+  \item Optimized performance using \textbf{MongoDB aggregation pipelines}, \textbf{Redis caching}, and \textbf{RabbitMQ} for async communication.
+  \item Led end-to-end development of two \textbf{Flutter-based e-commerce applications} (Yufin) with 10K+ MAUs.
+  \item Deployed containerized services using \textbf{Docker} and followed Agile delivery practices.
+\end{itemize}
 
-\begin{joblong}{Designation}{Mar 2019 - Jan 2021}
-\item long long line of blah blah that will wrap when the table fills the column width
-\item again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah. again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah
+\textbf{Software Engineer Intern} \hfill \textit{Apr 2022 - Apr 2024}
+\begin{itemize}
+    \item Developed and shipped production features for Android applications using \textbf{Flutter} with \textbf{BLoC} and \textbf{MVVM} architecture.
+    \item Built modules including \textbf{transport}, \textbf{inventory}, \textbf{voucher selling}, and \textbf{payment integration}.
+    \item Designed UI for a healthcare application and integrated backend APIs using Swagger-based contracts.
+    \item Improved app stability and performance; worked on bug fixing, feature enhancements, and Agile sprint cycles.
+\end{itemize}
+
 \end{joblong}
-  
-%Projects
+
+% Projects
 \section{Projects}
 
 \begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{Some Project} & \hfill \href{https://some-link.com}{Link to Demo} \\[3.75pt]
-\multicolumn{2}{@{}X@{}}{long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width}  \\
+\textbf{Social Media Post Maker} & 
+\hfill \href{https://play.google.com/store/apps/details?id=com.aeonian.rishteyy}{Google Play} \\[3pt]
+\multicolumn{2}{@{}X@{}}{
+Developed and maintained a high-scale Flutter application with \textbf{45,000+ downloads}, 
+\textbf{1K--2K DAU}, and \textbf{4.8+ star rating}. Enabled \textbf{5,00,000+ post shares} with a 
+\textbf{0.007\% ANR rate}. Implemented advanced post search, filtering, and a custom drag-and-drop 
+editor for stickers. Integrated \textbf{Razorpay payments}, \textbf{Google AdMob}, 
+local storage using \textbf{SharedPreferences}, and backend CRUD APIs using \textbf{Laravel}.
+} \\
+\end{tabularx}
+
+\vspace{2pt}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Voice Translation Service} & 
+\hfill \href{https://github.com/satyapsr13/spring-boot-translation-service}{GitHub} \\[3pt]
+\multicolumn{2}{@{}X@{}}{
+Built a RESTful backend service using \textbf{Spring Boot} to translate text into multiple languages 
+via \textbf{Azure Translator Text API}. Persisted original and translated content using 
+\textbf{MongoDB}. Implemented clean HTTP communication using \textbf{RestTemplate} and reduced 
+boilerplate with \textbf{Lombok}.
+} \\
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
@@ -185,34 +215,24 @@ long long line of blah blah that will wrap when the table fills the column width
 %----------------------------------------------------------------------------------------
 \section{Education}
 \begin{tabularx}{\linewidth}{@{}l X@{}}	
-2030 - present & PhD (Subject) at \textbf{University} \hfill \normalsize (GPA: 4.0/4.0) \\
 
-2023 - 2027 & Bachelor's Degree at \textbf{College} \hfill (GPA: 4.0/4.0) \\ 
+2020 - 2024 & Bachelor's Degree at \textbf{UIT RGPV Bhopal} \hfill (GPA: 7.8/10) \\ 
 
-2022 & Class 12th Some Board \hfill  (Grades) \\
-
-2021 & Class 10th Some Board \hfill  (Grades) \\
+2019 & Class 12th CBSE Board \hfill  (89\%) \\
+ 
 \end{tabularx}
-
-%----------------------------------------------------------------------------------------
-%	PUBLICATIONS
-%----------------------------------------------------------------------------------------
-\section{Publications}
-\begin{refsection}[citations.bib]
-\nocite{*}
-\printbibliography[heading=none]
-\end{refsection}
 
 %----------------------------------------------------------------------------------------
 %	SKILLS
 %----------------------------------------------------------------------------------------
 \section{Skills}
 \begin{tabularx}{\linewidth}{@{}l X@{}}
-Some Skills &  \normalsize{This, That, Some of this and that etc.}\\
-Some More Skills  &  \normalsize{Also some more of this, Some more that, And some of this and that etc.}\\  
+Tech Stack & \normalsize{Flutter, .NET Core, ASP.NET, Microservices, REST APIs, React, MongoDB, SQL} \\
+Languages & \normalsize{Java, C\#, Dart, TypeScript} \\
+Tools \& Practices & \normalsize{Clean Architecture, Docker, RabbitMQ, Git, Swagger} \\
 \end{tabularx}
 
+
 \vfill
-\center{\footnotesize Last updated: \today}
 
 \end{document}
